@@ -1,78 +1,61 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 int main() {
-    int opcionUsuario;
-    int vida = 100; // Puntos de vida del usuario
-    int energia = 50; // Energía del usuario
+    int decision;
+    int vida = 100;
 
-    while (true) {
-        cout << "\n*** Bienvenido al Espacio ***\n";
-        cout << "\n--- Menú Principal ---\n";
-        cout << "1. Explorar la galaxia desconocida\n";
-        cout << "2. Terminar la aventura\n";
-        cout << "Tu elección: ";
-        cin >> opcionUsuario;
+    std::cout << "Bienvenido a la historia interactiva. Tienes " << vida << " puntos de vida.\n";
 
-        switch (opcionUsuario) {
+    for (int i = 0; i < 5; i++) {
+        std::cout << "Estás en el punto de interacción " << i+1 << ". Elige una acción:\n";
+        if (i == 0) {
+            std::cout << "1. Realizar un salto hiperespacial\n";
+            std::cout << "2. Escanear el sector para detectar naves enemigas\n";
+            std::cout << "3. Reparar el escudo de la nave\n";
+        } else if (i == 1) {
+            std::cout << "1. Recoger minerales de un asteroide cercano\n";
+            std::cout << "2. Investigar una señal desconocida\n";
+            std::cout << "3. Realizar mantenimiento de rutina en la nave\n";
+        } else if (i == 2) {
+            std::cout << "1. Establecer contacto con una nave alienígena\n";
+            std::cout << "2. Realizar un análisis detallado de un planeta cercano\n";
+            std::cout << "3. Mejorar los sistemas de armas de la nave\n";
+        } else if (i == 3) {
+            std::cout << "1. Navegar a través de un campo de asteroides\n";
+            std::cout << "2. Descansar y recuperar energía\n";
+            std::cout << "3. Entrenar en el simulador de combate\n";
+        } else if (i == 4) {
+            std::cout << "1. Prepararse para la batalla final\n";
+            std::cout << "2. Revisar todos los sistemas de la nave\n";
+            std::cout << "3. Dar un discurso inspirador a la tripulación\n";
+        }
+        std::cout << "4. Consultar el estado de la nave\n";
+        std::cout << "5. Salir del programa\n";
+        std::cin >> decision;
+
+        switch (decision) {
             case 1:
-                cout << "\n--- Explorar la Galaxia Desconocida ---\n";
-                cout << "1. Investigar un campo de asteroides\n";
-                cout << "2. Investigar un agujero de gusano\n";
-                cout << "3. Explorar un planeta distante\n";
-                cout << "4. Escanear una nave abandonada\n";
-                cout << "5. Volver al menú principal\n";
-                cout << "Tu elección: ";
-                cin >> opcionUsuario;
-
-                switch (opcionUsuario) {
-                    case 1:
-                        cout << "Encuentras valiosos minerales en los asteroides.\n";
-                        cout << "Tu energía aumenta en 15 puntos.\n";
-                        energia += 15;
-                        break;
-                    case 2:
-                        cout << "Exploras el agujero de gusano y encuentras nuevas coordenadas.\n";
-                        cout << "Tu vida aumenta en 10 puntos.\n";
-                        vida += 10;
-                        break;
-                    case 3:
-                        cout << "Descubres un ecosistema sorprendente en el planeta.\n";
-                        cout << "Obtienes conocimiento sobre nuevas formas de vida.\n";
-                        break;
-                    case 4:
-                        cout << "Encuentras tecnología útil en la nave abandonada.\n";
-                        cout << "Tu energía aumenta en 20 puntos.\n";
-                        energia += 20;
-                        break;
-                    case 5:
-                        break; // Regresar al menú principal
-                    default:
-                        cout << "Has tomado una decisión peligrosa...\n";
-                        cout << "¡Tu nave ha sido destruida! Fin del juego.\n";
-                        return 0;
-                }
-                break;
             case 2:
-                cout << "¡Gracias por jugar el juego!\n";
+            case 3:
+                std::cout << "Has elegido la acción " << decision << ".\n";
+                // Aquí puedes agregar el código para cada acción
+                break;
+            case 4:
+                std::cout << "El estado de la nave es: TODO BIEN.\n";
+                i--; // Para repetir este punto de interacción
+                break;
+            case 5:
+                std::cout << "Has elegido salir del programa. ¡Hasta la próxima aventura espacial!\n";
                 return 0;
             default:
-                cout << "Has elegido una opción inesperada...\n";
-                cout << "¡Tu nave ha sido destruida! Fin del juego.\n";
-                return 0;
+                std::cout << "Opción no válida. Por favor, elige una acción del 1 al 5.\n";
+                i--; // Para repetir este punto de interacción
+                break;
         }
-
-        if (vida <= 0 || energia <= 0) {
-            cout << "¡Tu nave ha sido destruida! Fin del juego.\n";
-            return 0;
-        }
-
-        // Muestra las estadísticas actuales del usuario
-        cout << "Tu vida: " << vida << " puntos\n";
-        cout << "Tu energía: " << energia << " unidades\n";
     }
+
+    std::cout << "Has llegado al final de la historia. ¡Gracias por jugar!\n";
 
     return 0;
 }
